@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="game.js" type="application/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Handlee|Josefin+Slab|Julius+Sans+One|Reenie+Beanie" rel="stylesheet">
+
+
+
+    <title>Crystals Collector</title>
+
+
+</head>
+
+<body>
+
+    <div class="hero-image">
+    <div class="hero-text">
+    <header>
+
+        <h1> Crystals Collector! </h1>
+
+    </header>
+
+    <div id="randomNumber"></div>
+
+    <div class="instructions">
+
+        <h3> How to Play the Game </h3>
+        <br/>
+
+        <p>
+                &#9830;  You will be given a random number at the start of the game.
+        </p>
+
+        <p>
+                &#9830;  There are four Crystals Collector cards below. By clicking on a crystal name you will add a specific number of points to your total score.
+        </p>
+
+        <p>
+                &#9830;   You win the game by matching your total score to the random number, you lose the game if your total score goes above the
+                 random number.
+        </p>
+
+        <p>
+                &#9830;  When you start a new game, each crystal card is allotted specific, new values. 
+        </p>
+
+
+
+    </div>
+
+    <div class "randomMatch">
+        <h2> Wins:
+
+            <span id="numberWins"></span>
+            </br>
+            Losses:
+            <span id="numberLosses"></span>
+
+
+        </h2>
+        
+    </div>
+
+    <div class="gems">
+
+            <div class="panel panel-warning">
+                    <div class="panel-heading" id="one">Amethyst</div>
+                    <div class="panel-body" id="one">[for nightmares]</div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading" id="two">Citrine</div>
+                <div class="panel-body" id="two">[for clarity]</div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading" id="three">Emerald</div>
+                <div class="panel-body" id="three">[for balance]</div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading" id="four">Aventurine</div>
+                <div class="panel-body" id="four">[for perception]</div>
+            </div>
+
+    </div>
+    <div class="userTotal"></div>
+    <h1>
+        <span id= "youWin"></span>
+        <span id= "youLose"></span>
+    </h1>
+
+    <h2> Your total score is:
+
+        <span id="finalTotal"></span>
+
+    </h2>
+
+    </div>
+</div>
+</div>
+    <!--
+
+    PSEUDOCODE:
+
+
+    four crystals as buttons
+    computer displays random number [between 19 and 120] (number to match)
+    user click crystal [having value between 1-12], 
+    points displayed, 
+    computer add points to total
+    win if points match random number
+    lose if score above number
+    game restarts after win or loss and new 
+    display new random number at start of game
+    score and score counter reset to zero
+
+
+
+-->
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var random = Math.floor(Math.random() * 101 + 19)
+            //selects random number to be shown at start of game
+            //number should be between 19 and 120
+
+            $('#randomNumber').text(random);
+            //Appending random number to the randNumber id in the html doc
+
+            var crys1;
+            var crys2;
+            var crys3;
+            var crys4;
+
+            //setting up random numbers for each jewel
+            //random number has to be between 1 and 12
+            //
+            var userTotal = 0;
+            var wins = 0;
+            var losses = 0;
+            //Declaring variables for tallies
+            $('#numberWins').text(wins);
+            $('#numberLosses').text(losses);
+            //resets the game
+
+            function randomCrysNum() {
+
+                crys1 = Math.floor(Math.random() * 11 + 1);
+                crys2 = Math.floor(Math.random() * 11 + 1);
+                crys3 = Math.floor(Math.random() * 11 + 1);
+                crys4 = Math.floor(Math.random() * 11 + 1);
+            }
+
+            randomCrysNum();
+
+            function reset() {
+                random = Math.floor(Math.random() * 101 + 19);
+                console.log(random)
+                $('#randomNumber').text(random);
+                randomCrysNum();
+                userTotal = 0;
+                $('#finalTotal').text(userTotal);
+            }
+
+            //adds the wins to the userTotal
+
+            function yay() {
+                alert("You won!");
+                wins++;
+                $('#numberWins').text(wins);
+                reset();
+            }
+            //adds the losses to the userTotal
+            function loser() {
+                alert("You lose!");
+                losses++;
+                $('#numberLosses').text(losses);
+                reset();
+            }
+
+            function onCrystalClick(crystalValue) {
+                userTotal = userTotal + crystalValue;
+                console.log("New userTotal= " + userTotal);
+                $('#finalTotal').text(userTotal);
+                //sets win/lose conditions
+                if (userTotal == random) {
+                    yay();
+                }
+                else if (userTotal > random) {
+                    loser();
+                }
+            }
+            //sets up click for jewels
+
+            $('#one').on('click', function () {
+                onCrystalClick(crys1);
+            });
+
+            $('#two').on('click', function () {
+                onCrystalClick(crys2);
+            });
+
+            $('#three').on('click', function () {
+                onCrystalClick(crys3);
+            });
+
+            $('#four').on('click', function () {
+                onCrystalClick(crys4);
+            });
+
+        });
+
+
+
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+
+</body>
+
+</html>
