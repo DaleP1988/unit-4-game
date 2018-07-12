@@ -1,7 +1,8 @@
 
 body {
 
-background-color: black
+
+
 
 }
 .hero-image {
@@ -9,13 +10,19 @@ background-color: black
 background-image: url(file:///Users/garnetdianthus/Repoman/unit-4-game/assets/images/crystalcollectorgame.jpg);
 background-repeat: no-repeat;
 background-size: cover;
-height: 100%
+margin-top: -20px;
+height: 850px;
+position: relative;
+
 
 }
 
 .hero-text {
 
 color: ivory;
+padding-top: 30px;
+margin-left: 5%;
+
 }
 
 
@@ -42,6 +49,10 @@ font-family:'Amatic SC', cursive;
 h3{
 
 font-family:'Amatic SC', cursive;
+float: left;
+font-size: 30px;
+padding-right: 50px;
+padding-bottom: 50px;
 
 }
 
@@ -50,12 +61,29 @@ p {
 font-size: 15px;
 font-family:'Amatic SC', cursive;
 word-spacing: 5px;
+line-height: 25px;
+width: 100%;
+}
+
+.randomMatch {
+
+color: ivory;
+padding-top: 30px;
+margin-left: 5%;
+
+}
+
+.gems{
+
+margin-left: 30%;
+
 }
 
 #one, #two, #three, #four {
 
 font-family:'Amatic SC', cursive;
 color: burlywood;
+text-align: center;
 }
 
 
@@ -63,15 +91,15 @@ color: burlywood;
 
 width: 125px;
 display: inline-block;
+
 }
 
 .panel-heading {
 height: 20px;
 padding-top: 0;
-
+text-align: center;
 
 }
-
 
 
 

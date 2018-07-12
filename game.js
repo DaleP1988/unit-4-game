@@ -40,7 +40,7 @@ function yay(){
 alert("You won!");
    wins++;
    $('#numberWins').text(wins);
-   $('#youWin').text("You Win!!!");
+   $('#youWin').innerHTML("You Win!!!");
    reset();
 
 }
@@ -49,7 +49,7 @@ function loser(){
     alert("You lose!");
     losses++;
     $('#numberLosses').text(losses);
-    $('#youLose').text("You Lose");
+    $('#youLose').innerHTML("You Lose");
     reset()
 }
 
