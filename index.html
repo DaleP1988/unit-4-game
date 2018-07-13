@@ -8,11 +8,11 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="game.js" type="application/javascript"></script>
+    <script src="javascript/game.js" type="application/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Handlee|Josefin+Slab|Julius+Sans+One|Reenie+Beanie" rel="stylesheet">
 
 
@@ -33,14 +33,15 @@
     </header>
 
   
-
-    <div class="instructions">
+    <div class="container">
+        <div class = "col-sm-12 col-lg-12 col-xl-12">
+    
 
         <h3> How to Play the Game </h3>
         <br/>
 
         <p>
-                &#9830;  You will be given a number at the start of the game. There are four Crystals Collector cards below. Select and click on a crystal name to get points in your total score.
+                &#9830;  You will be given a number at the start of the game. There are four Crystals Collector cards below. Select and click a crystal name to get points in your total score.
         </p>
 
         <p>
@@ -55,6 +56,7 @@
 
 
     </div>
+    </div>
 
     <div class="randomNumber"> 
         <h2> Your Number is:
@@ -63,13 +65,14 @@
         </h2> 
     </div>
 
-</br>
+
 
 <div class="userTotal"></div>
-    <h1>
+    <h2> 
         <span id= "youWin"></span>
+      
         <span id= "youLose"></span>
-    </h1>
+    </h2>
 
     <h2> Your total score is:
 
@@ -78,7 +81,7 @@
     </h2>
 
 
-</br>
+
 
 
     <div class "randomMatch">
@@ -94,12 +97,7 @@
     </div>
 
     
-</br>
-</br> 
-</br>
-</br> 
-</br>
-</br> 
+
 
     <div class="gems">
 
@@ -142,93 +140,93 @@
 
 
 
--->
 
-    <script type="text/javascript">
+
+  <script type="text/javascript">
 
         $(document).ready(function () {
             var random = Math.floor(Math.random() * 101 + 19)
-            //selects random number to be shown at start of game
-            //number should be between 19 and 120
+            selects random number to be shown at start of game
+            number should be between 19 and 120
 
             $('#randomNumber').text(random);
-            //Appending random number to the randNumber id in the html doc
+            Appending random number to the randNumber id in the html doc
 
             var crys1;
             var crys2;
             var crys3;
             var crys4;
 
-            //setting up random numbers for each jewel
-            //random number has to be between 1 and 12
-            //
-            var userTotal = 0;
-            var wins = 0;
-            var losses = 0;
-            //Declaring variables for tallies
-            $('#numberWins').text(wins);
-            $('#numberLosses').text(losses);
-            //resets the game
+            setting up random numbers for each jewel
+            random number has to be between 1 and 12
+            
+             var userTotal = 0;
+             var wins = 0;
+             var losses = 0;
+            Declaring variables for tallies
+             $('#numberWins').text(wins);
+             $('#numberLosses').text(losses);
+              resets the game
 
-            function randomCrysNum() {
+              function randomCrysNum() {
 
-                crys1 = Math.floor(Math.random() * 11 + 1);
-                crys2 = Math.floor(Math.random() * 11 + 1);
-                crys3 = Math.floor(Math.random() * 11 + 1);
-                crys4 = Math.floor(Math.random() * 11 + 1);
-            }
+                  crys1 = Math.floor(Math.random() * 11 + 1);
+                  crys2 = Math.floor(Math.random() * 11 + 1);
+                  crys3 = Math.floor(Math.random() * 11 + 1);
+                  crys4 = Math.floor(Math.random() * 11 + 1);
+              }
 
-            randomCrysNum();
+              randomCrysNum();
 
-            function reset() {
-                random = Math.floor(Math.random() * 101 + 19);
-                console.log(random)
-                $('#randomNumber').text(random);
-                randomCrysNum();
-                userTotal = 0;
+              function reset() {
+                  random = Math.floor(Math.random() * 101 + 19);
+                  console.log(random)
+                  $('#randomNumber').text(random);
+                  randomCrysNum();
+                  userTotal = 0;
+                  $('#finalTotal').text(userTotal);
+              }
+
+            adds the wins to the userTotal
+
+              function yay() {
+                  alert("You won!");
+                  wins++;
+                  $('#numberWins').text(wins);
+                  reset();
+              }
+            adds the losses to the userTotal
+              function loser() {
+                  alert("You lose!");
+                  losses++;
+                  $('#numberLosses').text(losses);
+                  reset();
+              }
+
+              function onCrystalClick(crystalValue) {
+                  userTotal = userTotal + crystalValue;
+                  console.log("New userTotal= " + userTotal);
                 $('#finalTotal').text(userTotal);
-            }
-
-            //adds the wins to the userTotal
-
-            function yay() {
-                alert("You won!");
-                wins++;
-                $('#numberWins').text(wins);
-                reset();
-            }
-            //adds the losses to the userTotal
-            function loser() {
-                alert("You lose!");
-                losses++;
-                $('#numberLosses').text(losses);
-                reset();
-            }
-
-            function onCrystalClick(crystalValue) {
-                userTotal = userTotal + crystalValue;
-                console.log("New userTotal= " + userTotal);
-                $('#finalTotal').text(userTotal);
-                //sets win/lose conditions
-                if (userTotal == random) {
-                    yay();
-                }
-                else if (userTotal > random) {
-                    loser();
-                }
-            }
+                  //sets win/lose conditions
+                  if (userTotal == random) {
+                      yay();
+                  }
+                  else if (userTotal > random) {
+                      loser();
+                  }
+              }
             //sets up click for jewels
 
-            $('#one').on('click', function () {
-                onCrystalClick(crys1);
-            });
+              $('#one').on('click', function () {
+                  onCrystalClick(crys1);
+              });
 
-            $('#two').on('click', function () {
-                onCrystalClick(crys2);
-            });
+              $('#two').on('click', function () {
+                  onCrystalClick(crys2);
+              });
 
-            $('#three').on('click', function () {
-                onCrystalClick(crys3);
+              $('#three').on('click', function () {
+                  onCrystalClick(crys3);
             });
 
             $('#four').on('click', function () {
@@ -242,6 +240,9 @@
     </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+
+
+    -->
 
 </body>
 
