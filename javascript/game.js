@@ -79,27 +79,25 @@ $(document).ready(function () {
    // adds the wins to the userTotal
 
       function yay() {
-          $("#youWin").text("You Win!");    //THIS NOT WORKING
+          $("#you").text("You Win!");    //THIS NOT WORKING
           wins++;
           $('#numberWins').text(wins);
-          toto.stop();
           reset();
       }
    // adds the losses to the userTotal
       function loser() {
-          $("#youLose").text("You Lose!");    //THESE NOT WORKING
+          $("#you").text("You Lose!");    //THESE NOT WORKING
           losses++;
           $('#numberLosses').text(losses);
-          toto.stop();
           reset();
       }
+    
     
 
       function onCrystalClick(crystalValue) {
           userTotal = userTotal + crystalValue;
           console.log("New userTotal= " + userTotal);
         $('#finalTotal').text(userTotal);
-        toto.stop();
           //sets win/lose conditions
           if (userTotal == random) {
               yay();
