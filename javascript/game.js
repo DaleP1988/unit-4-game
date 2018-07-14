@@ -2,28 +2,37 @@
 
 
 
-function sound(src) {                               //NOT WORKING!
-    this.sound = document.createElement("audio");   //NOT WORKING!
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function () {
-        this.sound.play();
-    }
-    this.stop = function () {
-        this.sound.pause();
-    }
-}
-
-var toto;
-
 
 
 $(document).ready(function () {
-    toto = new sound ("javascript/toto.wav");
-    toto.play();
+    // console.log($('#music'))
+// $('#music')[0].play();
+    // $(document).getElementById("music").play();
+
+
+//
+    // function sound(src) {                               //NOT WORKING!
+    //     this.sound = document.createElement("audio");   //NOT WORKING!
+    //     this.sound.src = src;
+    //     this.sound.setAttribute("preload", "auto");
+    //     this.sound.setAttribute("controls", "none");
+    //     this.sound.style.display = "none";
+    //     document.body.appendChild(this.sound);
+    //     this.play = function () {
+    //         this.sound.play();
+    //     }
+    //     this.stop = function () {
+    //         this.sound.pause();
+    //     }
+    // }
+
+    
+
+    // toto = new sound ("javascript/toto.wav");
+    //$('#music').get(0).play; // toto.play();
+    // var toto = $('#music')[0]//.play();
+    var toto = document.getElementById("music");//.play();
+    // console.log(toto);
     var random = Math.floor(Math.random() * 101 + 19)
    // selects random number to be shown at start of game
    // number should be between 19 and 120
@@ -62,6 +71,7 @@ $(document).ready(function () {
           console.log(random)
           $('#randomNumber').text(random);
           randomCrysNum();
+          toto.play();
           userTotal = 0;
           $('#finalTotal').text(userTotal);
       }
@@ -69,37 +79,47 @@ $(document).ready(function () {
    // adds the wins to the userTotal
 
       function yay() {
-          alert("You won!");
-          $('#youWin!').text("You Win!");    //THIS NOT WORKING
+          $("#youWin").text("You Win!");    //THIS NOT WORKING
           wins++;
           $('#numberWins').text(wins);
+          toto.stop();
           reset();
       }
    // adds the losses to the userTotal
       function loser() {
-          alert("You lose!");
-          $('#youLose!').text("You Lose!");    //THESE NOT WORKING
+          $("#youLose").text("You Lose!");    //THESE NOT WORKING
           losses++;
           $('#numberLosses').text(losses);
+          toto.stop();
           reset();
       }
+    
 
       function onCrystalClick(crystalValue) {
           userTotal = userTotal + crystalValue;
           console.log("New userTotal= " + userTotal);
         $('#finalTotal').text(userTotal);
+        toto.stop();
           //sets win/lose conditions
           if (userTotal == random) {
               yay();
-              toto.stop();
+              
+            
           }
           else if (userTotal > random) {
               loser();
-              toto.stop();
+             
+              
           }
       }
     //sets up click for jewels
 
+    $(".gems").on("click", function(){
+    toto.play();
+
+    });
+
+    
       $('#one').on('click', function () {
           onCrystalClick(crys1);
       });

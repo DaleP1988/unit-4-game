@@ -40,6 +40,13 @@ font-size: 50px;
 
 }
 
+#youWin, #youLose{
+
+font-size: 40px;
+font-weight: bold;
+
+}
+
 
 h2 {
 
@@ -80,7 +87,7 @@ margin-left: 5%;
 .gems{
 
 margin-left: 30%;
-margin-top: 18%;
+margin-top: 15%;
 
 }
 
