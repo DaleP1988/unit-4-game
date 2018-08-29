@@ -2,7 +2,7 @@
 
 # **Crystals Collector Game**
 
-The Crystals Collector Game is a simple game built with JavaScript, HTMl + CSS, and Bootstrap 4. Google Fonts was used for additional styling and image background was downloaded from pexels.com.
+The Crystals Collector Game is a simple game built with JavaScript, HTMl + CSS, and Bootstrap 4. The image background was downloaded from pexels.com. Google Fonts was used for additional styling. 
 
 
 ## **How to Play Crystals Collector:**
