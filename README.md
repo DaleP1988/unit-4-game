@@ -12,3 +12,7 @@ At the beginning of the game, the player is given a random number. The player is
 
 
 **Check out this site at: [Crystals Collector Game](https://dalep1988.github.io/unit-4-game/).**
+
+
+![crystal](https://user-images.githubusercontent.com/38080854/46482193-f7776e80-c7a9-11e8-9402-20996f037dea.jpg)
+
